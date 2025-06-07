@@ -10,34 +10,8 @@
 #
 ####
 
-set(SOURCE_FILES
-  "${CMAKE_CURRENT_LIST_DIR}/Led.fpp"
-  "${CMAKE_CURRENT_LIST_DIR}/Led.cpp"
+register_fprime_module(
+    SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/Led.fpp"
+        "${CMAKE_CURRENT_LIST_DIR}/Led.cpp"
 )
-
-# Uncomment and add any modules that this component depends on, else
-# they might not be available when cmake tries to build this component.
-#
-# Module names are derived from the path from the nearest project/library/framework
-# root when not specifically overridden by the developer. i.e. The module defined by
-# `Ref/SignalGen/CMakeLists.txt` will be named `Ref_SignalGen`.  `Ref/SignalGen`
-# is an acceptable alternative and will be internally converted to `Ref_SignalGen`.
-#
-# set(MOD_DEPS
-#   MyPackage_MyOtherModule
-# )
-
-register_fprime_module()
-
-
-### Unit Tests ###
-# set(UT_SOURCE_FILES
-#   "${CMAKE_CURRENT_LIST_DIR}/Led.fpp"
-#   "${CMAKE_CURRENT_LIST_DIR}/test/ut/LedTestMain.cpp"
-#   "${CMAKE_CURRENT_LIST_DIR}/test/ut/LedTester.cpp"
-# )
-# set(UT_MOD_DEPS
-#   STest
-# )
-# set(UT_AUTO_HELPERS ON)
-# register_fprime_ut()

@@ -7,9 +7,11 @@
 ####
 # restrict_platforms(Linux Darwin)
 
-set(MOD_DEPS Os STM32_HAL)
-set(SOURCE_FILES
-    "${CMAKE_CURRENT_LIST_DIR}/UartDriver.fpp"
-    "${CMAKE_CURRENT_LIST_DIR}/UartDriver.cpp"
+register_fprime_module(
+    SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/UartDriver.fpp"
+        "${CMAKE_CURRENT_LIST_DIR}/UartDriver.cpp"
+    DEPENDS
+        Os
+        STM32_HAL
 )
-register_fprime_module()

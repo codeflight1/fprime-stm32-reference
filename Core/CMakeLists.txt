@@ -16,7 +16,7 @@ register_fprime_deployment(
     SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/Main.cpp"
     DEPENDS
-        ${FPRIME_CURRENT_MODULE}/Top 
+        ${FPRIME_CURRENT_MODULE}_Top 
         Startup
         STM32_HAL
 )

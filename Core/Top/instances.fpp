@@ -13,25 +13,11 @@ module Core {
   # Active component instances
   # ----------------------------------------------------------------------
 
-  instance blockDrv: Drv.BlockDriver base id 0x0100 \
-    queue size Default.QUEUE_SIZE \
-    stack size Default.STACK_SIZE \
-    priority 140
+  instance rateGroup1: Svc.PassiveRateGroup base id 0x0200
 
-  instance rateGroup1: Svc.ActiveRateGroup base id 0x0200 \
-    queue size Default.QUEUE_SIZE \
-    stack size Default.STACK_SIZE \
-    priority 120
+  instance rateGroup2: Svc.PassiveRateGroup base id 0x0300
 
-  instance rateGroup2: Svc.ActiveRateGroup base id 0x0300 \
-    queue size Default.QUEUE_SIZE \
-    stack size Default.STACK_SIZE \
-    priority 119
-
-  instance rateGroup3: Svc.ActiveRateGroup base id 0x0400 \
-    queue size Default.QUEUE_SIZE \
-    stack size Default.STACK_SIZE \
-    priority 118
+  instance rateGroup3: Svc.PassiveRateGroup base id 0x0400
 
   instance cmdDisp: Svc.CommandDispatcher base id 0x0500 \
     queue size 20 \
@@ -48,20 +34,20 @@ module Core {
       stack size Default.STACK_SIZE \
       priority 100 \
 
-  instance fileDownlink: Svc.FileDownlink base id 0x0800 \
-    queue size 30 \
-    stack size Default.STACK_SIZE \
-    priority 100
+#instance fileDownlink: Svc.FileDownlink base id 0x0800 \
+#    queue size 30 \
+#   stack size Default.STACK_SIZE \
+#   priority 100
 
-  instance fileManager: Svc.FileManager base id 0x0900 \
-    queue size 30 \
-    stack size Default.STACK_SIZE \
-    priority 100
+# instance fileManager: Svc.FileManager base id 0x0900 \
+#   queue size 30 \
+#   stack size Default.STACK_SIZE \
+#   priority 100
 
-  instance fileUplink: Svc.FileUplink base id 0x0A00 \
-    queue size 30 \
-    stack size Default.STACK_SIZE \
-    priority 100
+# instance fileUplink: Svc.FileUplink base id 0x0A00 \
+#   queue size 30 \
+#   stack size Default.STACK_SIZE \
+#   priority 100
 
   instance eventLogger: Svc.ActiveLogger base id 0x0B00 \
     queue size Default.QUEUE_SIZE \
@@ -87,6 +73,8 @@ module Core {
     stack size Default.STACK_SIZE \
     priority 96
 
+  instance led: Components.Led base id 0x0E00
+
   # ----------------------------------------------------------------------
   # Queued component instances
   # ----------------------------------------------------------------------
@@ -99,9 +87,9 @@ module Core {
   # ----------------------------------------------------------------------
 
   @ Communications driver. May be swapped with other com drivers like UART or TCP
-  instance comDriver: Drv.LinuxUartDriver base id 0x4000
+  instance comDriver: Components.UartDriver base id 0x4000
 
-  instance framer: Svc.Framer base id 0x4100
+  instance framer: Svc.FprimeFramer base id 0x4100
 
   instance fatalAdapter: Svc.AssertFatalAdapter base id 0x4200
 
@@ -115,10 +103,13 @@ module Core {
 
   instance textLogger: Svc.PassiveTextLogger base id 0x4800
 
-  instance deframer: Svc.Deframer base id 0x4900
+  instance deframer: Svc.FprimeDeframer base id 0x4900
 
   instance systemResources: Svc.SystemResources base id 0x4A00
 
   instance comStub: Svc.ComStub base id 0x4B00
 
+  instance frameAccumulator: Svc.FrameAccumulator base id 0x4D00
+
+  instance fprimeRouter: Svc.FprimeRouter base id 0x4E00
 }

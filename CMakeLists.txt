@@ -4,7 +4,7 @@
 ####
 
 cmake_minimum_required(VERSION 3.13)
-project(Velox C CXX)
+project(Velox C CXX ASM)
 
 ###
 # F' Core Setup

@@ -15,8 +15,6 @@ set(SOURCE_FILES
 set(MOD_DEPS
   Fw/Logger
   # Communication Implementations
-  Drv/Udp
-  Drv/LinuxUartDriver
 )
 
 register_fprime_module()

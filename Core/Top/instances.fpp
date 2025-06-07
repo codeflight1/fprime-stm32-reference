@@ -112,4 +112,6 @@ module Core {
   instance frameAccumulator: Svc.FrameAccumulator base id 0x4D00
 
   instance fprimeRouter: Svc.FprimeRouter base id 0x4E00
+
+  instance driver: Components.PassiveDriver base id 0x4F00
 }

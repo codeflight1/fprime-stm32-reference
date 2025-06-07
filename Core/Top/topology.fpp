@@ -52,6 +52,7 @@ module Core {
     instance textLogger
     instance systemResources
     instance led
+    instance driver
 
     # ----------------------------------------------------------------------
     # Pattern graph specifiers
@@ -63,7 +64,7 @@ module Core {
 
 #    param connections instance prmDb
 
-   telemetry connections instance tlmSend
+    telemetry connections instance tlmSend
 
 #   text event connections instance textLogger
 
@@ -103,7 +104,7 @@ module Core {
     }
 
     connections RateGroups {
-      # Block driver
+      driver.CycleOut -> rateGroupDriver.CycleIn
 
       # Rate group 1
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup1] -> rateGroup1.CycleIn
@@ -119,7 +120,6 @@ module Core {
       # Rate group 3
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
 #     rateGroup3.RateGroupMemberOut[0] -> $health.Run
-#     rateGroup3.RateGroupMemberOut[1] -> blockDrv.Sched
 #     rateGroup3.RateGroupMemberOut[2] -> bufferManager.schedIn
     }
 

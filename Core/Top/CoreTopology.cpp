@@ -14,10 +14,6 @@
 
 #include <fprime-baremetal/Os/TaskRunner/TaskRunner.cpp>
 
-// Used for 1Hz synthetic cycling
-#include <Os/Mutex.hpp>
-#include <Utils/Hash/HashConfig.hpp>
-
 #include "stm32_hal.h"
 
 // Allows easy reference to objects in FPP/autocoder required namespaces
@@ -63,7 +59,6 @@ enum TopologyConstants {
 
 // Ping entries are autocoded, however; this code is not properly exported. Thus, it is copied here.
 Svc::Health::PingEntry pingEntries[] = {
-    {PingEntries::Core_blockDrv::WARN, PingEntries::Core_blockDrv::FATAL, "blockDrv"},
     {PingEntries::Core_tlmSend::WARN, PingEntries::Core_tlmSend::FATAL, "chanTlm"},
     {PingEntries::Core_cmdDisp::WARN, PingEntries::Core_cmdDisp::FATAL, "cmdDisp"},
     {PingEntries::Core_cmdSeq::WARN, PingEntries::Core_cmdSeq::FATAL, "cmdSeq"},
@@ -168,7 +163,7 @@ void setupTopology(const TopologyState& state) {
 void startSimulatedCycle(Fw::TimeInterval interval) {
     // Main loop
     while (true) {
-        // Core::blockDrv.callIsr();
+        Core::driver.call();
         // Os::Task::delay(interval);
         HAL_Delay(interval.getSeconds() * 1000 + interval.getUSeconds() / 1000);
         Os::Baremetal::TaskRunner::getSingleton().run();

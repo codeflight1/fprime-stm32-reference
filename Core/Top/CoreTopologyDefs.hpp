@@ -19,12 +19,9 @@ namespace Core {
  *
  * The topology autocoder requires an object that carries state with the name `Core::TopologyState`. Only the type
  * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The contents are entirely up
- * to the definition of the project. Here, they are derived from command line inputs.
+ * to the definition of the project.
  */
-struct TopologyState {
-    const CHAR* uartDevice;
-    U32 baudRate;
-};
+struct TopologyState {};
 
 /**
  * \brief required ping constants
@@ -46,9 +43,6 @@ struct TopologyState {
  * ```
  */
 namespace PingEntries {
-namespace Core_blockDrv {
-enum { WARN = 3, FATAL = 5 };
-}
 namespace Core_tlmSend {
 enum { WARN = 3, FATAL = 5 };
 }

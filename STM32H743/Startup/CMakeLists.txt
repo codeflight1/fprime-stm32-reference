@@ -1,0 +1,10 @@
+register_fprime_module(
+    SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/startup_stm32h743vitx.s"
+        "${CMAKE_CURRENT_LIST_DIR}/main.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/stm32h7xx_hal_msp.c"
+        "${CMAKE_CURRENT_LIST_DIR}/stm32h7xx_it.c"
+        "${CMAKE_CURRENT_LIST_DIR}/syscalls.c"
+        "${CMAKE_CURRENT_LIST_DIR}/sysmem.c"
+        "${CMAKE_CURRENT_LIST_DIR}/system_stm32h7xx.c"
+)
